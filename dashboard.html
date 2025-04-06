@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clickstream Dashboard</title>
+</head>
+<body>
+    <h1>Clickstream Dashboard</h1>
+
+    <h2>Summary Table</h2>
+    <table border="1" style="margin-top: 20px;">
+        <tr>
+            <th>Page</th>
+            <th>Clicks</th>
+            <th>Avg Time Spent (s)</th>
+        </tr>
+        {% for row in summary %}
+        <tr>
+            <td>{{ row["Page"] }}</td>
+            <td>{{ row["Clicks"] }}</td>
+            <td>{{ row["Avg Time Spent"] | round(2) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 style="margin-top: 40px;">Visualizations</h2>
+    <div>
+        {{ bar_chart | safe }}
+    </div>
+    <div>
+        {{ pie_chart | safe }}
+    </div>
+    <div>
+        {{ time_chart | safe }}
+    </div>
+
+    <h2 style="margin-top: 40px;">Raw Clickstream Data</h2>
+    <table border="1" style="margin-top: 10px;">
+        <tr>
+            <th>User ID</th>
+            <th>Session ID</th>
+            <th>Page</th>
+            <th>Page Title</th>
+            <th>Clicks</th>
+            <th>Avg Time Spent (s)</th>
+        </tr>
+        {% for row in tracking %}
+        <tr>
+            <td>{{ row["User ID"] }}</td>
+            <td>{{ row["Session ID"] }}</td>
+            <td>{{ row["Page"] }}</td>
+            <td>{{ row["Page Title"] }}</td>
+            <td>{{ row["Clicks"] }}</td>
+            <td>{{ row["Avg Time Spent"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
