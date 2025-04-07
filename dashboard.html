@@ -1,0 +1,69 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="/static/tracker.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/products">Products</a>
+            <a href="/dashboard">Dashboard</a>
+        </nav>
+
+        <h1>📊 Dashboard Analytics</h1>
+
+        {% if summary %}
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Total Clicks</th>
+                        <th>Avg Time Spent (s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in summary %}
+                        <tr>
+                            <td>{{ row['Page'] }}</td>
+                            <td>{{ row['Clicks'] }}</td>
+                            <td>{{ "%.2f"|format(row['Avg Time Spent']) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="button-group">
+                <button onclick="showChart('bar')">Clicks per Page</button>
+                <button onclick="showChart('pie')">Click Distribution</button>
+                <button onclick="showChart('time')">Time Spent</button>
+            </div>
+
+            <div id="bar" class="chart-section" style="display:none;">
+                {{ bar_chart | safe }}
+            </div>
+            <div id="pie" class="chart-section" style="display:none;">
+                {{ pie_chart | safe }}
+            </div>
+            <div id="time" class="chart-section" style="display:none;">
+                {{ time_chart | safe }}
+            </div>
+
+            <script>
+                function showChart(type) {
+                    ['bar', 'pie', 'time'].forEach(id => {
+                        document.getElementById(id).style.display = (id === type) ? 'block' : 'none';
+                    });
+                }
+            </script>
+        {% else %}
+            <p style="text-align: center;">No data available yet. Interact with the site to generate tracking information.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
