@@ -1,0 +1,244 @@
+/* Global Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: linear-gradient(to bottom right, #dfefff, #ffffff),
+                url('/static/bg-tech-light.svg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    min-height: 100vh;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Headings */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #0d47a1;
+    text-align: center;
+}
+
+/* Navigation Bar */
+nav {
+    background: #ffffffdd;
+    padding: 16px 30px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: fit-content;
+    margin: 0 auto 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav a {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: white;
+    background-color: #007bff;
+    transform: scale(1.08);
+}
+
+/* Content Containers */
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Sections */
+.section {
+    padding: 25px;
+    background-color: #f4faff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Card Layout */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: rgb(70, 149, 176);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    animation: cardDance 1s infinite ease-in-out;
+}
+
+@keyframes cardDance {
+    0%   { transform: scale(1) rotate(0deg); }
+    25%  { transform: scale(1.03) rotate(1deg); }
+    50%  { transform: scale(1.05) rotate(-1deg); }
+    75%  { transform: scale(1.03) rotate(1deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #555;
+}
+
+body.dark .card p {
+    color: #f0f0f0;
+}
+
+/* Chart Buttons */
+.button-section,
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+
+.button-section button,
+.button-group button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-section button:hover,
+.button-group button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Chart Container */
+.dashboard-chart,
+.chart-section {
+    margin-top: 30px;
+    display: none;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+/* Dark Mode Styles */
+body.dark {
+    background: linear-gradient(to bottom right, #121212, #1e1e1e),
+                url('/static/bg-tech-dark.svg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f0f0f0;
+}
+
+body.dark nav {
+    background: #2c2c2c;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .section {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    color: #f0f0f0;
+}
+
+body.dark .card {
+    background: #333;
+    color: #fff;
+}
+
+body.dark nav a {
+    color: #90caf9;
+}
+
+body.dark nav a:hover {
+    background-color: #1565c0;
+    color: white;
+}
+
+/* Dark Mode Toggle Button */
+#darkToggle {
+    background-color: #343a40;
+    color: #f8f9fa;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#darkToggle:hover {
+    background-color: #495057;
+    transform: scale(1.05);
+}
+
+/* Fade-in Animation */
+.card fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in animation for product cards */
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1.2;
+      transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-in-out forwards;
+    opacity: 0;
+}
